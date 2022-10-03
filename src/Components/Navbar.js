@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './css/Navbar.css'
 import Loginimg from '../img/loginImg.png'
 import {NavLink} from 'react-router-dom'
 
 const Navbar = () => {
 
-    const user= true;
+    const [ user , setUser] = useState(false)
   return (<>
     <section className='nav'>
         <div className='navLeft'>
@@ -20,9 +20,11 @@ const Navbar = () => {
                 <li className='navListItem'><NavLink  className="NavLink" to='/'>About</NavLink></li>
                 <li className='navListItem'><NavLink className="NavLink" to='/'>Contact</NavLink></li> 
                 <li className='navListItem'><NavLink className="NavLink"  to='/Write'>Write</NavLink></li>
-                <li className='navListItem'><NavLink className="NavLink" to='/'>Logout</NavLink></li>
+                <li className='navListItem' onClick={()=>{
+                        setUser(!user)
+                }}><NavLink className="NavLink">Logout</NavLink></li>
             </ul>
-        </div>
+        </div> 
         <div className='navRight'>
             { user ? 
              <NavLink to='/setting'><img 
